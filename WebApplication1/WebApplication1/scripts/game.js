@@ -1,13 +1,6 @@
 ﻿// CreateJS Boilerplate for COMP397
-
-
-class Button {
-    //PRIVATE INSTANCE VARIABLES
-    private _image: createjs.Bitmap;
-    private _x: number;
-    private _y: number;
-
-    constructor(path: string, x: number, y: number) {
+var Button = (function () {
+    function Button(path, x, y) {
         this._x = x;
         this._y = y;
         this._image = new createjs.Bitmap(path);
@@ -17,53 +10,46 @@ class Button {
         this._image.addEventListener("mouseover", this._buttonOver);
         this._image.addEventListener("mouseout", this._buttonOut);
     }
-
     // PUBLIC PROPERTIES
-    public setX(x: number):void {
+    Button.prototype.setX = function (x) {
         this._x = x;
-    }
+    };
 
-    public getX():number { 
+    Button.prototype.getX = function () {
         return this._x;
-    }
+    };
 
-    public setY(y: number):void {
+    Button.prototype.setY = function (y) {
         this._y = y;
-    }
+    };
 
-    public getY(): number {
+    Button.prototype.getY = function () {
         return this._y;
-    }
+    };
 
-    public getImage(): createjs.Bitmap {
+    Button.prototype.getImage = function () {
         return this._image;
-    }
-
+    };
 
     // PRIVATE EVENT HANDLERS
-    private _buttonOut(event: createjs.MouseEvent):void {
-     event.currentTarget.alpha = 1; // 100% Alpha 
+    Button.prototype._buttonOut = function (event) {
+        event.currentTarget.alpha = 1; // 100% Alpha
+    };
 
-    }
-
-    private _buttonOver(event: createjs.MouseEvent):void {
-    event.currentTarget.alpha = 0.5;
-
-    }
-}
-
-
-
+    Button.prototype._buttonOver = function (event) {
+        event.currentTarget.alpha = 0.5;
+    };
+    return Button;
+})();
 
 // VARIABLES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-var canvas; // Reference to the HTML 5 Canvas element
-var stage: createjs.Stage; // Reference to the Stage
-var tiles: createjs.Bitmap[] = [];
-var reelContainers: createjs.Container[] = [];
+var canvas;
+var stage;
+var tiles = [];
+var reelContainers = [];
 
 // GAME CONSTANTS
-var NUM_REELS: number = 3;
-
+var NUM_REELS = 3;
 
 // GAME VARIABLES
 var playerMoney = 1000;
@@ -87,23 +73,17 @@ var oranges = 0;
 var apples = 0;
 var blanks = 0;
 
-
-
 // GAME OBJECTS
-var game: createjs.Container; // Main Game Container Object
-var background: createjs.Bitmap;
-var spinButton: Button;
-var betMaxButton: Button;
-var betOneButton: Button;
-var resetButton: Button;
-var powerButton: Button;
+var game;
+var background;
+var spinButton;
+var betMaxButton;
+var betOneButton;
+var resetButton;
+var powerButton;
 
 // FUNCTIONS ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
 function init() {
-
-
-
     canvas = document.getElementById("canvas");
     stage = new createjs.Stage(canvas); // Parent Object
     stage.enableMouseOver(20); // Turn on Mouse Over events
@@ -114,12 +94,10 @@ function init() {
     main();
 }
 
-
 // GAMELOOP
 function gameLoop() {
     stage.update();
 }
-
 
 /* Utility function to reset all fruit tallies */
 function resetFruitTally() {
@@ -145,17 +123,14 @@ function resetAll() {
     winRatio = 0;
 }
 
-
 /* Utility function to check if a value falls within a range of bounds */
 function checkRange(value, lowerBounds, upperBounds) {
     if (value >= lowerBounds && value <= upperBounds) {
         return value;
-    }
-    else {
+    } else {
         return !value;
     }
 }
-
 
 /* When this function is called it determines the betLine results.
 e.g. Bar - Orange - Banana */
@@ -265,14 +240,11 @@ function determineWinnings() {
 
 }
 
-
-// MAIN MEAT of my code goes here 
-function spinButtonClicked(event: createjs.MouseEvent) {
-
+// MAIN MEAT of my code goes here
+function spinButtonClicked(event) {
     spinResult = Reels();
     fruits = spinResult[0] + " - " + spinResult[1] + " - " + spinResult[2];
-    
-    // Iterate over the number of reels
+
     for (var index = 0; index < NUM_REELS; index++) {
         reelContainers[index].removeAllChildren();
         tiles[index] = new createjs.Bitmap("assets/images/" + spinResult[index] + ".png");
@@ -280,9 +252,7 @@ function spinButtonClicked(event: createjs.MouseEvent) {
     }
 }
 
-
 function createUI() {
-
     background = new createjs.Bitmap("assets/images/nikharBackground.png");
     game.addChild(background); // Add the background to the game container
 
@@ -297,27 +267,22 @@ function createUI() {
     reelContainers[2].x = 260;
     reelContainers[2].y = 128;
 
-
-
     // Spin Button
     spinButton = new Button("assets/images/spinButton.png", 301, 342);
     game.addChild(spinButton.getImage());
-
 
     // Spin Button Event Listeners
     spinButton.getImage().addEventListener("click", spinButtonClicked);
 
     // Bet Max Button
-    betMaxButton = new Button("assets/images/betMaxButton.png", 222, 241);
+    betMaxButton = new Button("assets/images/betMaxButton.png", 222, 341);
     game.addChild(betMaxButton.getImage());
     betMaxButton.getImage().addEventListener("click", spinButtonClicked);
-
 
     // Bet One Button
     betOneButton = new Button("assets/images/betOneButton.png", 145, 342);
     game.addChild(betOneButton.getImage());
     betOneButton.getImage().addEventListener("click", spinButtonClicked);
-
 
     // Reset Button
     resetButton = new Button("assets/images/resetButton.png", 75, 342);
@@ -325,12 +290,10 @@ function createUI() {
     resetButton.getImage().addEventListener("click", spinButtonClicked);
 
     // Power Button
-    powerButton = new Button("assets/images/powerButton.png", 6, 341);
+    powerButton = new Button("assets/images/powerButton.png", 6, 340);
     game.addChild(powerButton.getImage());
     powerButton.getImage().addEventListener("click", spinButtonClicked);
-
 }
-
 
 function main() {
     game = new createjs.Container(); // Instantiates the Game Container
@@ -338,8 +301,4 @@ function main() {
     createUI();
 
     stage.addChild(game); // Adds the Game Container to the Stage
-    
-
 }
-
-

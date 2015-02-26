@@ -68,20 +68,21 @@
   <ItemGroup>
     <Content Include="assets\images\apple.png" />
     <Content Include="assets\images\banana.png" />
-    <Content Include="assets\images\betmaxbutton.png" />
-    <Content Include="assets\images\betonebutton.png" />
+    <Content Include="assets\images\betMaxButton.png" />
+    <Content Include="assets\images\betOneButton.png" />
     <Content Include="assets\images\blank.png" />
     <Content Include="assets\images\cherry.png" />
     <Content Include="assets\images\nikharBackground.png" />
     <Content Include="assets\images\orange.png" />
     <Content Include="assets\images\pineapple.png" />
-    <Content Include="assets\images\powerbutton.png" />
-    <Content Include="assets\images\resetbutton.png" />
-    <Content Include="assets\images\spinbutton.png" />
+    <Content Include="assets\images\powerButton.png" />
+    <Content Include="assets\images\resetButton.png" />
+    <Content Include="assets\images\spinButton.png" />
     <Content Include="assets\images\strwberry.png" />
     <Content Include="assets\images\tomato.png" />
     <Content Include="css\game.css" />
     <Content Include="index.html" />
+    <Content Include="scripts\game.js" />
     <Content Include="scripts\lib\createjs-lib.d.ts" />
     <Content Include="scripts\lib\easeljs.d.ts" />
     <Content Include="scripts\game.ts" />
