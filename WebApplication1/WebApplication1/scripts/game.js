@@ -52,6 +52,7 @@ var reelContainers = [];
 var NUM_REELS = 3;
 
 // GAME VARIABLES
+maxbet = 5;
 var playerMoney = 1000;
 var winnings = 0;
 var jackpot = 5000;
@@ -113,6 +114,7 @@ function resetFruitTally() {
 
 /* Utility function to reset the player stats */
 function resetAll() {
+    maxbet = 5;
     playerMoney = 1000;
     winnings = 0;
     jackpot = 5000;
@@ -251,6 +253,33 @@ function spinButtonClicked(event) {
         reelContainers[index].addChild(tiles[index]);
     }
 }
+function resetButtonClicked(event) {
+   
+    for (var index = 0; index < NUM_REELS; index++) {
+        reelContainers[index].removeAllChildren();
+        tiles[index] = new createjs.Bitmap("assets/images/blank.png");
+        reelContainers[index].addChild(tiles[index]);
+    }
+}
+function powerButtonClicked(event) {
+
+    
+    createUI();
+        
+}
+function betOneButtonClicked(event) {
+
+    playerBet = 1;
+
+    if(spinButtonClicked==true)
+    {
+        playerBet--;
+    }
+
+}
+
+
+
 
 function createUI() {
     background = new createjs.Bitmap("assets/images/nikharBackground.png");
@@ -282,17 +311,17 @@ function createUI() {
     // Bet One Button
     betOneButton = new Button("assets/images/betOneButton.png", 145, 342);
     game.addChild(betOneButton.getImage());
-    betOneButton.getImage().addEventListener("click", spinButtonClicked);
+    betOneButton.getImage().addEventListener("click", betOneButtonClicked);
 
     // Reset Button
     resetButton = new Button("assets/images/resetButton.png", 75, 342);
     game.addChild(resetButton.getImage());
-    resetButton.getImage().addEventListener("click", spinButtonClicked);
+    resetButton.getImage().addEventListener("click", resetButtonClicked);
 
     // Power Button
     powerButton = new Button("assets/images/powerButton.png", 6, 340);
     game.addChild(powerButton.getImage());
-    powerButton.getImage().addEventListener("click", spinButtonClicked);
+    powerButton.getImage().addEventListener("click", powerButtonClicked);
 }
 
 function main() {
