@@ -57,6 +57,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="scripts\lib\easeljs-0.8.0.min.js" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -65,17 +66,37 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\images\apple.png" />
+    <Content Include="assets\images\banana.png" />
+    <Content Include="assets\images\betmaxbutton.png" />
+    <Content Include="assets\images\betonebutton.png" />
+    <Content Include="assets\images\blank.png" />
+    <Content Include="assets\images\cherry.png" />
+    <Content Include="assets\images\nikharBackground.png" />
+    <Content Include="assets\images\orange.png" />
+    <Content Include="assets\images\pineapple.png" />
+    <Content Include="assets\images\powerbutton.png" />
+    <Content Include="assets\images\resetbutton.png" />
+    <Content Include="assets\images\spinbutton.png" />
+    <Content Include="assets\images\strwberry.png" />
+    <Content Include="assets\images\tomato.png" />
+    <Content Include="css\game.css" />
     <Content Include="index.html" />
+    <Content Include="scripts\lib\createjs-lib.d.ts" />
+    <Content Include="scripts\lib\easeljs.d.ts" />
+    <Content Include="scripts\game.ts" />
+    <Content Include="scripts\lib\preloadjs-0.6.0.min.js" />
+    <Content Include="scripts\lib\preloadjs.d.ts" />
+    <Content Include="scripts\lib\soundjs-0.6.0.min.js" />
+    <Content Include="scripts\lib\soundjs.d.ts" />
+    <Content Include="scripts\lib\tweenjs-0.6.0.min.js" />
+    <Content Include="scripts\lib\tweenjs.d.ts" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="assets\images\sounds\" />
-    <Folder Include="css\" />
-    <Folder Include="scripts\lib\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
