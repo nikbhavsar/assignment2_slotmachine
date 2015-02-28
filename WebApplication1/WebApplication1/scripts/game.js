@@ -251,7 +251,10 @@ function spinButtonClicked(event) {
         reelContainers[index].removeAllChildren();
         tiles[index] = new createjs.Bitmap("assets/images/" + spinResult[index] + ".png");
         reelContainers[index].addChild(tiles[index]);
+        
     }
+    
+    
 }
 function resetButtonClicked(event) {
    
